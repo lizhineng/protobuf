@@ -2283,15 +2283,6 @@ bool Generator::Generate(const FileDescriptor* file, const Options& options,
     return false;
   }
 
-  if (!options.is_descriptor &&
-      FileDescriptorLegacy(file).syntax() !=
-          FileDescriptorLegacy::Syntax::SYNTAX_PROTO3) {
-    *error =
-        "Can only generate PHP code for proto3 .proto files.\n"
-        "Please add 'syntax = \"proto3\";' to the top of your .proto file.\n";
-    return false;
-  }
-
   GenerateFile(file, options, generator_context);
 
   return true;
